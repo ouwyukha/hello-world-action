@@ -31,6 +31,8 @@ jobs:
           provenance: false
           sbom: false
           no-cache: true
+      - name: Echo
+        run: "echo 'Echo'"
       - name: Build 2
         uses: docker/build-push-action@v3
         with:
@@ -42,6 +44,8 @@ jobs:
           provenance: false
           sbom: false
           no-cache: true
+      - name: Echo 2
+        run: "echo 'Echo 2'"
       - name: Build 3
         uses: docker/build-push-action@v3
         with:
@@ -53,3 +57,5 @@ jobs:
           provenance: false
           sbom: false
           no-cache: true
+      - name: Echo 3
+        run: "echo 'Echo 3'"
