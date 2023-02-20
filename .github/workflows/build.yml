@@ -20,42 +20,19 @@ jobs:
           password: ${{ secrets.PASSWORD }}
       - name: Set up
         uses: docker/setup-buildx-action@v2
-      - name: Build
-        uses: docker/build-push-action@v3
+      - name: Build with Retry
+        uses: Wandalen/wretry.action@v1.0.36
         with:
-          context: ./
-          file: ./Dockerfile
-          builder: ${{ steps.buildx.outputs.name }}
-          push: true
-          tags: ouwyukha/hello-world:latest
-          provenance: false
-          sbom: false
-          no-cache: true
+          action: docker/build-push-action@v3
+          with: |
+            context: ./
+            file: ./Dockerfile
+            builder: ${{ steps.buildx.outputs.name }}
+            push: true
+            tags: ouwyukha/hello-world:latest
+            provenance: false
+            sbom: false
+            no-cache: true
+          attempt_limit: 3
       - name: Echo
         run: "echo 'Echo'"
-      - name: Build 2
-        uses: docker/build-push-action@v3
-        with:
-          context: ./
-          file: ./Dockerfile
-          builder: ${{ steps.buildx.outputs.name }}
-          push: true
-          tags: ouwyukha/hello-world:latest
-          provenance: false
-          sbom: false
-          no-cache: true
-      - name: Echo 2
-        run: "echo 'Echo 2'"
-      - name: Build 3
-        uses: docker/build-push-action@v3
-        with:
-          context: ./
-          file: ./Dockerfile
-          builder: ${{ steps.buildx.outputs.name }}
-          push: true
-          tags: ouwyukha/hello-world:latest
-          provenance: false
-          sbom: false
-          no-cache: true
-      - name: Echo 3
-        run: "echo 'Echo 3'"
