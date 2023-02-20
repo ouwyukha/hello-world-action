@@ -31,3 +31,25 @@ jobs:
           provenance: false
           sbom: false
           no-cache: true
+      - name: Build 2
+        uses: docker/build-push-action@v3
+        with:
+          context: ./
+          file: ./Dockerfile
+          builder: ${{ steps.buildx.outputs.name }}
+          push: true
+          tags: ouwyukha/hello-world:latest
+          provenance: false
+          sbom: false
+          no-cache: true
+      - name: Build 3
+        uses: docker/build-push-action@v3
+        with:
+          context: ./
+          file: ./Dockerfile
+          builder: ${{ steps.buildx.outputs.name }}
+          push: true
+          tags: ouwyukha/hello-world:latest
+          provenance: false
+          sbom: false
+          no-cache: true
