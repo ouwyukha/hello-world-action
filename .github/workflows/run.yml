@@ -1,0 +1,15 @@
+name: Test Post
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Test Post
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: './'
+      - name: Echo
+        run: "echo 'Echo'"

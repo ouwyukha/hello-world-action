@@ -1,0 +1,6 @@
+name: 'Test Action'
+description: 'Test Action'
+runs:
+  using: node16
+  main: 'main.js'
+  post: 'post.js'
