@@ -1,11 +1,11 @@
-name: Build
+name: Build with Retry using Wandalen
 
 on:
   workflow_dispatch:
 
 jobs:
   build:
-    name: Build
+    name: Build with Retry using Wandalen
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -18,7 +18,7 @@ jobs:
       - name: Set up
         uses: docker/setup-buildx-action@v2
       - name: Build with Retry
-        uses: Wandalen/wretry.action@v1.0.36_js_action
+        uses: Wandalen/wretry.action@v1.0.36
         with:
           action: docker/build-push-action@v3
           with: |

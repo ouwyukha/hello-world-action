@@ -1,11 +1,11 @@
-name: Build
+name: Build with Manual Retry
 
 on:
   workflow_dispatch:
 
 jobs:
   build:
-    name: Build
+    name: Build with Manual Retry
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
